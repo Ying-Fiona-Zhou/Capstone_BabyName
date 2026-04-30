@@ -111,6 +111,15 @@ def resolve_page_background_data_uri() -> str | None:
     return None
 
 
+def metric_display_label(metric: str) -> str:
+    labels = {
+        "Count": "Count",
+        "Name_Ratio": "Name Ratio (per 1,000)",
+        "Gender_Name_Ratio": "Gender Name Ratio (per 1,000)",
+    }
+    return labels.get(metric, metric.replace("_", " "))
+
+
 def enable_tab_anchor_navigation() -> None:
     components.html(
         """
@@ -200,9 +209,10 @@ def render_trend_plot(history: pd.DataFrame, metric: str, title_name: str) -> No
     ax.set_facecolor(BLUE_PALETTE[0])
     ax.plot(history["Year"], history[metric], color=BLUE_PALETTE[6], linewidth=2.6)
     ax.scatter(history["Year"], history[metric], color=BLUE_PALETTE[6], s=20)
-    ax.set_title(f"{title_name} {metric.replace('_', ' ')} Over Time", fontsize=15, color="#173954")
+    axis_label = metric_display_label(metric)
+    ax.set_title(f"{title_name} {axis_label} Over Time", fontsize=15, color="#173954")
     ax.set_xlabel("Year")
-    ax.set_ylabel(metric.replace("_", " "))
+    ax.set_ylabel(axis_label)
     ax.tick_params(colors="#35556f")
     for spine in ax.spines.values():
         spine.set_color(BLUE_PALETTE[2])
@@ -774,7 +784,13 @@ with trends_tab:
     with controls_left:
         names_input = st.text_input("Names to compare", "Olivia, Liam")
     with controls_right:
-        metric = st.selectbox("Metric", ["Count", "Name_Ratio", "Gender_Name_Ratio"])
+        metric_options = {
+            "Count": "Count",
+            "Name ratio (per 1,000)": "Name_Ratio",
+            "Gender ratio (per 1,000)": "Gender_Name_Ratio",
+        }
+        metric_label = st.selectbox("Metric", list(metric_options.keys()))
+        metric = metric_options[metric_label]
 
     years_left, years_right = st.columns(2)
     with years_left:
@@ -820,9 +836,10 @@ with trends_tab:
                     markeredgewidth=1.1,
                 )
 
-        ax.set_title(f"{metric.replace('_', ' ')} from {start_year} to {end_year}", fontsize=16, color=BLUE_PALETTE[6])
+        axis_label = metric_display_label(metric)
+        ax.set_title(f"{axis_label} from {start_year} to {end_year}", fontsize=16, color=BLUE_PALETTE[6])
         ax.set_xlabel("Year")
-        ax.set_ylabel(metric.replace("_", " "))
+        ax.set_ylabel(axis_label)
         ax.tick_params(colors="#35556f")
         for spine in ax.spines.values():
             spine.set_color(BLUE_PALETTE[2])
@@ -847,6 +864,7 @@ with trends_tab:
             )
             .sort_values(["peak_count"], ascending=False)
         )
+        summary = summary.rename(columns={"average_ratio": "average_ratio_per_1000"})
         render_dataframe(summary)
 
 
@@ -902,7 +920,7 @@ with prediction_tab:
         else:
             latest = history.iloc[-1]
             st.metric("Latest observed count", f"{int(latest['Count']):,}", delta=f"{int(latest['Year'])}")
-            st.metric("Latest name ratio", f"{float(latest['Name_Ratio']):.2f} per 1,000")
+            st.metric("Latest name ratio (per 1,000)", f"{float(latest['Name_Ratio']):.2f}")
 
         try:
             model, preprocessor = load_model_assets()
@@ -945,8 +963,12 @@ with prediction_tab:
         if not history.empty:
             render_metric = st.selectbox(
                 "Historical metric for this name",
-                ["Count", "Name_Ratio", "Gender_Name_Ratio"],
+                ["Count", "Name_Ratio (per 1,000)", "Gender_Name_Ratio (per 1,000)"],
                 key="single_name_metric",
+            )
+            render_metric = (
+                render_metric.replace("Name_Ratio (per 1,000)", "Name_Ratio")
+                .replace("Gender_Name_Ratio (per 1,000)", "Gender_Name_Ratio")
             )
             render_trend_plot(history, render_metric, name)
 
