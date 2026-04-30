@@ -1,6 +1,11 @@
 # don't upload data files
 *.csv
 data/
+.DS_Store
+.Rhistory
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# Large local time series experiments and generated forecasts
+time_series_models/

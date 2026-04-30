@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import streamlit as st
 import requests
 import pandas as pd
@@ -5,8 +7,10 @@ import matplotlib.pyplot as plt
 import joblib
 import json
 
-# Load your data
-file_path = '/Users/yingzhou/Downloads/Capstone_Babyname/notebooks/data.csv'
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+# Load project data from the repository so the app works across machines.
+file_path = PROJECT_ROOT / "notebooks" / "data.csv"
 data = pd.read_csv(file_path, index_col=0)
 
 # Sort data by Name and Year
@@ -148,13 +152,13 @@ elif page == "Baby Name Trends":
 elif page == "Baby Name Prediction":
     # Load the saved logistic regression model
     def load_model():
-        return joblib.load('../models/logistic_model.pkl')
+        return joblib.load(PROJECT_ROOT / 'models' / 'logistic_model.pkl')
 
     log_reg_model = load_model()
 
     # Load the saved preprocessor model
     def preprocessor_model():
-        return joblib.load('../models/preprocessor.pkl')
+        return joblib.load(PROJECT_ROOT / 'models' / 'preprocessor.pkl')
 
     preprocessor_model = preprocessor_model()
 
