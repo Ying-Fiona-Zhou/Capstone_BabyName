@@ -1,0 +1,52 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FBFF"/>
+      <stop offset="1" stop-color="#ECF4FB"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(610 255) rotate(90) scale(220 330)">
+      <stop stop-color="#DCEBFA"/>
+      <stop offset="1" stop-color="#DCEBFA" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="520" rx="28" fill="url(#bg)"/>
+  <ellipse cx="610" cy="255" rx="330" ry="220" fill="url(#glow)"/>
+
+  <circle cx="990" cy="110" r="8" fill="#9DBBD8"/>
+  <circle cx="1028" cy="146" r="5" fill="#9DBBD8" fill-opacity="0.7"/>
+  <circle cx="210" cy="122" r="6" fill="#A9C4DE"/>
+  <circle cx="176" cy="154" r="4" fill="#A9C4DE" fill-opacity="0.75"/>
+
+  <ellipse cx="602" cy="296" rx="210" ry="155" fill="#FDFEFE"/>
+  <ellipse cx="602" cy="316" rx="170" ry="108" fill="#F6FAFE"/>
+
+  <circle cx="602" cy="222" r="108" fill="#FFEFE4"/>
+  <ellipse cx="602" cy="244" rx="92" ry="74" fill="#FFF6EF"/>
+
+  <circle cx="562" cy="223" r="8" fill="#3A5068"/>
+  <circle cx="642" cy="223" r="8" fill="#3A5068"/>
+  <circle cx="559" cy="220" r="2.5" fill="white"/>
+  <circle cx="639" cy="220" r="2.5" fill="white"/>
+
+  <path d="M586 252C595 263 609 263 618 252" stroke="#D98686" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="540" cy="245" rx="12" ry="8" fill="#F6C2BF" fill-opacity="0.55"/>
+  <ellipse cx="664" cy="245" rx="12" ry="8" fill="#F6C2BF" fill-opacity="0.55"/>
+
+  <path d="M518 186C538 162 566 150 602 150C638 150 666 162 686 186" stroke="#8FB0CF" stroke-width="14" stroke-linecap="round"/>
+  <path d="M560 154C570 133 589 120 602 116C615 120 634 133 644 154" stroke="#8FB0CF" stroke-width="9" stroke-linecap="round"/>
+
+  <circle cx="776" cy="318" r="42" fill="#90B4D7"/>
+  <circle cx="776" cy="318" r="26" fill="#E8F2FC"/>
+  <rect x="728" y="298" width="28" height="40" rx="12" fill="#90B4D7"/>
+
+  <path d="M836 224L844 240H862L848 250L854 266L836 256L818 266L824 250L810 240H828L836 224Z" fill="#A8C4DE"/>
+  <path d="M370 208L376 220H390L380 228L384 240L370 232L356 240L360 228L350 220H364L370 208Z" fill="#A8C4DE" fill-opacity="0.75"/>
+
+  <text x="72" y="438" fill="#4E6882" font-family="SF Pro Display, -apple-system, Segoe UI, Arial, sans-serif" font-size="34" font-weight="600">
+    Baby Name Studio
+  </text>
+  <text x="72" y="475" fill="#7C93AA" font-family="SF Pro Text, -apple-system, Segoe UI, Arial, sans-serif" font-size="20">
+    Friendly, modern, and data-driven.
+  </text>
+</svg>
