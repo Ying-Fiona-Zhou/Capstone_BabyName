@@ -2,6 +2,12 @@
 
 An end-to-end machine learning project that explores historical U.S. baby-name trends and turns the strongest findings into an interactive prediction website.
 
+## Live App
+
+- Public demo: [babynamesprediction.streamlit.app](https://babynamesprediction.streamlit.app/)
+- Current data coverage: `1880-2024`
+- Current deployment target: Streamlit Community Cloud on `Python 3.10`
+
 ## Project Focus
 
 This project asks a simple but engaging question:
@@ -54,6 +60,8 @@ The main dataset used by the app includes:
 - `Name_Ratio`
 - `Gender_Name_Ratio`
 
+The current public app and packaged deployment dataset are updated through `2024`.
+
 The prediction workflow also uses engineered features derived in the modeling notebooks, including:
 
 - `Is_Famous`
@@ -65,6 +73,13 @@ The prediction workflow also uses engineered features derived in the modeling no
 ## Modeling Direction
 
 The current interactive prediction experience is centered on a logistic regression model trained to estimate whether a name is likely to land in the Top 100.
+
+Current retrained model snapshot:
+
+- Training window: `1880-2024`
+- Training rows: `145,000` top-1000 yearly records
+- Test accuracy: `0.9785`
+- Test ROC AUC: `0.9953`
 
 Supporting experiments in the repository include:
 
@@ -114,11 +129,15 @@ streamlit run streamlit/app1.py
 
 The easiest way to share this project publicly is through Streamlit Community Cloud.
 
+Current production URL:
+
+- [https://babynamesprediction.streamlit.app/](https://babynamesprediction.streamlit.app/)
+
 Deployment settings:
 
 - Repository root contains `requirements.txt`
 - Entrypoint file: `streamlit/app1.py`
-- Recommended Python version on Streamlit Cloud: `3.9` or `3.10`
+- Recommended Python version on Streamlit Cloud: `3.10`
 
 To make deployment practical on GitHub, the app reads a lightweight packaged dataset from:
 
@@ -164,9 +183,8 @@ That rebuilds:
 ## Next Improvements
 
 - Add screenshots or GIFs of the app for portfolio readers
-- Tighten the README further with model evaluation metrics
 - Make the famous-name feature source more transparent
-- Deploy the Streamlit app and link it from a future portfolio website
+- Link the app from a future portfolio website
 
 ## Dataset Note
 
