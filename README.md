@@ -128,6 +128,39 @@ If that file is not present, the app falls back to the larger local development 
 
 - `notebooks/data.csv`
 
+## Updating to a New SSA Year
+
+If you want to refresh the app with the newest official SSA release:
+
+1. Download the official SSA national data file (`names.zip`) or the yearly file (for example `yob2024.txt`).
+2. Save the SSA birth totals page (`numberUSbirths.html`) locally from:
+   - `https://www.ssa.gov/OACT/babynames/numberUSbirths.html`
+3. Run:
+
+```bash
+python3 scripts/update_babyname_data.py \
+  --source /path/to/names.zip \
+  --birth-totals-html /path/to/numberUSbirths.html \
+  --year 2024
+```
+
+This updates both:
+
+- `notebooks/data.csv`
+- `data_source/app_data.pkl.gz`
+
+If you also want the prediction model to reflect the new year, retrain it after the data refresh:
+
+```bash
+python3 scripts/retrain_logistic_model.py
+```
+
+That rebuilds:
+
+- `notebooks/Featured_Data.csv`
+- `models/preprocessor.pkl`
+- `models/logistic_model.pkl`
+
 ## Next Improvements
 
 - Add screenshots or GIFs of the app for portfolio readers

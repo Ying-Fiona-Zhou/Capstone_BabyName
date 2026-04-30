@@ -11,3 +11,7 @@ __pycache__/
 
 # Large local time series experiments and generated forecasts
 time_series_models/
+
+# Local SSA download and scratch files
+names/
+tmp/

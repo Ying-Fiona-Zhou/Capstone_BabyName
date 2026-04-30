@@ -470,7 +470,7 @@ inject_styles()
 data = load_data()
 
 st.markdown(
-    """
+    f"""
     <div class="hero-card">
       <div class="hero-grid">
         <div>
@@ -490,7 +490,7 @@ st.markdown(
         </div>
         <div class="hero-stat-block">
           <div class="hero-stat-kicker">Why It Stands Out</div>
-          <div class="hero-stat-value">1880-2023</div>
+          <div class="hero-stat-value">{data['Year'].min()}-{data['Year'].max()}</div>
           <p class="hero-stat-note">
             A century-spanning naming dataset becomes something interactive:
             part research summary, part model demo, part polished case study.
