@@ -6,6 +6,8 @@ data/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+__pycache__/
+*.pyc
 
 # Large local time series experiments and generated forecasts
 time_series_models/
